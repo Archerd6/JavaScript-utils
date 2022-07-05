@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejemplo de JavaScript</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+    <p id="text">Copying this text</p>
+    <button id="copy-text-btn">Copy Text</button>
+    <script>
+        function copyText(htmlElement)
+        {
+            if (!htmlElement)
+            {
+                return;
+            }
+
+            let elementText = htmlElement.innerText;
+
+            let inputElement = document.createElement('input');
+            inputElement.setAttribute('value', elementText);
+            document.body.appendChild(inputElement);
+            inputElement.select();
+            document.execCommand('copy');
+            inputElement.parentNode.removeChild(inputElement);
+
+        }
+
+        document.querySelector('#copy-text-btn').onclick =
+            function ()
+            {
+                copyText(document.querySelector('#text'));
+            }
+
+    </script>
+
+</body>
+</html>
